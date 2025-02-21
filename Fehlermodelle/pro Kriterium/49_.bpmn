@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1sur8d9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.23.0">
+  <bpmn:process id="Process_16m7ojh" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_155fj8f">
+      <bpmn:outgoing>Flow_0b3pqfy</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_06drtvk" name="speichern">
+      <bpmn:incoming>Flow_0b3pqfy</bpmn:incoming>
+      <bpmn:outgoing>Flow_0b23v5q</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0b3pqfy" sourceRef="StartEvent_155fj8f" targetRef="Activity_06drtvk" />
+    <bpmn:endEvent id="Event_0y89kpr">
+      <bpmn:incoming>Flow_0b23v5q</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0b23v5q" sourceRef="Activity_06drtvk" targetRef="Event_0y89kpr" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_16m7ojh">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_155fj8f">
+        <dc:Bounds x="156" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06drtvk_di" bpmnElement="Activity_06drtvk">
+        <dc:Bounds x="250" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0y89kpr_di" bpmnElement="Event_0y89kpr">
+        <dc:Bounds x="412" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0b3pqfy_di" bpmnElement="Flow_0b3pqfy">
+        <di:waypoint x="192" y="100" />
+        <di:waypoint x="250" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0b23v5q_di" bpmnElement="Flow_0b23v5q">
+        <di:waypoint x="350" y="100" />
+        <di:waypoint x="412" y="100" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

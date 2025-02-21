@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPMN Quality</title>
+    <script type="module" src="./script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+      <!-- Control Buttons -->
+      <div class="row bg-light pt-3 pb-2 mb-3">
+        <div class="col-12 col-lg-5 col-xl-4">
+          <input type="file" class="form-control" id="input" webkitdirectory directory multiple>
+          <div class="spinner-border d-none" id="inputLoadFiles" role="status">
+            <span class="visually-hidden">Lade...</span>
+          </div>
+        </div>
+        <div class="col-4 col-lg-3 col-xl-3">
+          <button id="sendBtn" type="button" class="btn btn-primary disabled">Senden</button>
+        </div>
+        <div class="col-8 col-lg-4 col-xl-5">
+          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filterOptions" aria-expanded="false" aria-controls="filterOptions">
+            Optionen
+          </button>
+          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#pagination" aria-expanded="false" aria-controls="pagination">
+            Seiten
+          </button>
+          <button class="btn btn-success" type="button" id="downloadModels">Modelle herunterladen</button>
+        </div>
+        
+        <!-- Filter Optionen Collapse -->
+        <div class="collapse mt-2" id="filterOptions">
+          <div class="card card-body">
+            <ul class="nav nav-tabs" id="settingsCollapse" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="filter-tab" data-bs-toggle="tab" data-bs-target="#filter-tab-pane" type="button" role="tab" aria-controls="filter-tab-pane" aria-selected="true">Filterbedingungen</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="kriterien-tab" data-bs-toggle="tab" data-bs-target="#kriterien-tab-pane" type="button" role="tab" aria-controls="kriterien-tab-pane" aria-selected="false">Einzelne Kriterien</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings-tab-pane" type="button" role="tab" aria-controls="settings-tab-pane" aria-selected="false">Seiteneinstellungen</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="false">Informationen</button>
+              </li>
+            </ul>
+            <div class="tab-content my-3" id="filter">
+              <div class="tab-pane show active" id="filter-tab-pane" role="tabpanel" aria-labelledby="filter-tab" tabindex="0">
+                  <div>
+                    <label for="guidelineFilterNumber" class="form-label">Anzahl Modellierungsrichtlinien die erfüllt sein müssen</label>
+                    <span><span id="curFilterNumber"></span> / <span id="maxFilterNumber"></span></span>
+                    <input type="range" class="form-range" min="0" step="1" id="guidelineFilterNumber">
+                  </div>
+                  <div>
+                    <label for="otherFilterNumber" class="form-label">Anzahl Anderer Regeln die erfüllt sein müssen</label>
+                    <span><span id="curOtherFilterNumber"></span> / <span id="maxOtherFilterNumber"></span></span>
+                    <input type="range" class="form-range" min="0" step="1" id="otherFilterNumber">
+                  </div>
+              </div>
+              <div class="tab-pane" id="kriterien-tab-pane" role="tabpanel" aria-labelledby="kriterien-tab" tabindex="0">
+                <div class="container">
+                  <div class="row">
+                    <h5 class="my-3">Syntaxregeln</h5>
+                  </div>
+                  <div class="row" id="criteriaAreaSyntaxCheckBoxes">
+                    
+                  </div>
+                  <div class="row">
+                    <h5 class="my-3">Modellierungsrichtlinien</h5>
+                  </div>
+                  <div class="row" id="criteriaAreaGuidelineCheckBoxes">
+                    
+                  </div>
+                  <div class="row">
+                    <h5 class="my-3">Andere</h5>
+                  </div>
+                  <div class="row" id="criteriaAreaOtherCheckBoxes">
+                    
+                  </div>
+                  <div class="row">
+                    <h5 class="my-3">Duplikate</h5>
+                  </div>
+                  <div class="row"> 
+                    <div class="">
+                      <input class="form-check-input" type="checkbox" value="" id="checkDuplicatesCriteria" checked>
+                      <label class="form-check-label" for="checkDuplicatesCriteria">
+                        Duplikate prüfen (muss vor der Prüfung gesetzt werden)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="settings-tab-pane" role="tabpanel" aria-labelledby="settings-tab" tabindex="0">
+                <div>
+                  <label for="modelsPerPage" class="form-label">Angezeigte Modelle pro Seite (min. 1)</label>
+                  <input type="number" id="modelsPerPage" class="form-control" value="20" min="1">
+                </div>
+                <div class="my-2">
+                  <label for="pollingTimeInterval" class="form-label">Polling Zeitintervall (min. 100)</label>
+                  <input type="number" id="pollingTimeInterval" class="form-control" value="1000" min="100" aria-describedby="pollingSettingHelp">
+                  <div id="pollingSettingHelp" class="form-text">
+                    Der Zeitraum der zwischen den Anfragen liegt um zu prüfen ob die Ergebnisse der Prüfung vorliegen oder nicht.
+                    Es empfiehlt sich den Zeitraum zu erhöhen je mehr Modelle geprüft werden müssen.
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane show" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+                <h5>Farbschema</h5>
+                <div class="my-2"><span class="bg-danger d-inline-block mx-1" style="width: 55px; height: 14px;"></span><span>Dieses Modell wird herausgefiltert</span></div>
+                <div class="my-2"><span class="bg-warning d-inline-block mx-1" style="width: 55px; height: 14px;"></span><span>Dieses Modell ist ein Duplikat.
+                  Es wird beim Herunterladen der Modelle geprüft, welches Duplikat jeweils die beste Qualität hat.
+                  Eine höhere Qualität zeichnet sich aus durch: 1. eine höhere Anzahl an erfüllten Syntaxkritierien
+                  2. eine höhere Anzahl an erfüllten Modellierungsrichtlinien und anderen Kriterien
+                </span></div>
+                <div class="my-3"><i>Klicke auf eine Zeile in der Tabelle um mehr über die Kriterien zum Modell zu erfahren.</i></div>
+                <h5>Über das Projekt</h5>
+                <div class="my-3">
+                  <div>Dieses Tool ist im Rahmen des Masterprojekts "System Quality Engineering" im Sommersemester 2024 an der Technischen Universität Berlin in Zusammenarbeit mit dem Fraunhofer FOKUS entstanden.</div>
+                  <div>Projektbeteiligte: Luisa Wittig, Miriam Richter, Leonhardt Hollatz, Minh Hieu Le</div>
+                  <div>Unter der Betreuung von Lukas Strey</div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="collapse mt-2" id="pagination">
+          <nav aria-label="Pagination">
+            <ul class="pagination">
+              <div class="container-fluid" id="paginationContainer">
+                <div class="row" id="paginationList">
+
+                </div>
+              </div>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+    <!-- Anzahl der geprüften Regeln -->
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <span>Syntaxregeln: <span id="syntaxRulesChecked"></span> / <span id="syntaxRulesTotal"></span></span>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <span>Modellierungsrichtlinien: <span id="guidelineRulesChecked"></span> / <span id="guidelineRulesTotal"></span></span>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <span>Andere: <span id="otherRulesChecked"></span> / <span id="otherRulesTotal"></span></span>
+      </div>
+    </div>
+
+    <br>
+    <!-- Progress Bar -->
+    <div class="row">
+      <div class="col-12">
+        <div class="progress" id="progressBarParentAria" role="progressbar" aria-label="Stand der Prüfung" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar" style="width: 0%;" id="progressBar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ergebnis Tabelle -->
+    <div class="row">
+      <div class="col-12">
+        <table class="table" id="tableParent">
+            <thead>
+              <tr id="tableRowInTableHead">
+                <th scope="col">#</th>
+                <th scope="col">Dateiname</th>
+                <th scope="col"># Prozesse</th>
+                <th scope="col"># Syntaxregeln</th>
+                <th scope="col"># Guidelineregeln</th>
+                <th scope="col"># Andere</th>
+                <th scope="col">Duplikat?</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+        <div id="loadTable" class="d-none">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Lade...</span>
+          </div>
+          <span>Duplikate prüfen...</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <span style="position: fixed; bottom: 0px; right: 0px;" id="timeMeasure"></span>
+
+</body>
+</html>

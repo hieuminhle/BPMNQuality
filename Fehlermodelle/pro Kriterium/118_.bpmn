@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1fbxbwk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.23.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <bpmn:process id="Process_02u2g11" isExecutable="false">
+    <bpmn:task id="Activity_04cj1th" name="This is a task" />
+    <bpmn:exclusiveGateway id="Gateway_1pgdy67" name="This is a gateway" />
+    <bpmn:dataStoreReference id="DataStoreReference_03s106r" name="This is a data store" />
+    <bpmn:dataObjectReference id="DataObjectReference_0n2e74b" name="This is a data object" dataObjectRef="DataObject_0cck307" />
+    <bpmn:dataObject id="DataObject_0cck307" />
+    <bpmn:startEvent id="Event_1fasnva" name="This is a start event" />
+    <bpmn:endEvent id="Event_18xo65p" name="This is an end event" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_02u2g11">
+      <bpmndi:BPMNShape id="Activity_04cj1th_di" bpmnElement="Activity_04cj1th">
+        <dc:Bounds x="180" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1pgdy67_di" bpmnElement="Gateway_1pgdy67" isMarkerVisible="true">
+        <dc:Bounds x="345" y="95" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="327" y="152" width="86" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_03s106r_di" bpmnElement="DataStoreReference_03s106r">
+        <dc:Bounds x="205" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="198" y="272" width="66" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_0n2e74b_di" bpmnElement="DataObjectReference_0n2e74b">
+        <dc:Bounds x="332" y="215" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="317" y="272" width="66" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1fasnva_di" bpmnElement="Event_1fasnva">
+        <dc:Bounds x="452" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="437" y="145" width="67" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18xo65p_di" bpmnElement="Event_18xo65p">
+        <dc:Bounds x="452" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="436" y="265" width="69" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

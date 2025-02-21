@@ -1,0 +1,288 @@
+{
+    "syntax":[
+        {
+            "name": "connectedElements",
+            "description": "Alle Flusselemente innerhalb eines Pools müssen verbunden sein (mit Sequenzflüssen)"
+        },
+        {
+            "name": "noUndefinedBoundary",
+            "description": "Es dürfen keine angehefteten unbestimmten Zwischenereignisse verwendet werden"
+        },
+        {
+            "name": "noThrowingStarts",
+            "description": "Es dürfen keine auslösenden Startereignisse verwendet werden (Startereignisse haben keinen ausgehenden Nachrichtenfluss)"
+        },
+        {
+            "name": "noCatchingEnds",
+            "description": "Es dürfen keine eintretenden Endereignisse verwendet werden (Endereignisse haben keinen eingehenden Nachrichtenfluss)"
+        },
+        {
+            "name": "correctBoundaryFlows",
+            "description": "Angeheftete Ereignisse müssen mind. einen ausgehenden Sequenzfluss haben, keinen eingehenden"
+        },
+        {
+            "name": "correctCancelEnds",
+            "description": "Abbruchendereignisse dürfen nur innerhalb von Transaktionen verwendet werden"
+        },
+        {
+            "name": "correctCancelInterEvents",
+            "description": "Eintretende Abbruchzwischenereignisse dürfen nur als angeheftetes Ereignis an Transaktionen verwendet werden"
+        },
+        {
+            "name": "correctCompStartEvents",
+            "description": "Kompensationsstartereignisse dürfen nur in Ereignisunterprozessen (nicht in top-level Prozessen) verwendet werden"
+        },
+        {
+            "name": "correctCompInterEvents",
+            "description": "Eintretende Kompensationszwischenereignisse dürfen nur als angeheftetes Ereignis an einer Aufgabe verwendet werden"
+        },
+        {
+            "name": "correctStartEndCombo",
+            "description": "Wenn es ein Startereignis gibt, muss es auch ein Endereignis geben und anders herum"
+        },
+        {
+            "name": "correctStartEventFlows",
+            "description": "Startereignisse dürfen keinen eingehenden Sequenzfluss haben und müssen mindestens einen ausgehenden Sequenzfluss haben"
+        },
+        {
+            "name": "correctEndEventFlows",
+            "description": "Endereignisse dürfen keinen ausgehenden Sequenzfluss haben und müssen mindestens einen eingehenden Sequenzfluss haben"
+        },
+        {
+            "name": "correctLinkEventFlows",
+            "description": "Ein Linkereignis darf nicht gleichzeitig einen eingehenden und ausgehenden Sequenzfluss haben"
+        },
+        {
+            "name": "noGatewayMessageFlows",
+            "description": "Keine Nachrichtenflüsse von oder zu Gateways"
+        },
+        {
+            "name": "correctGatewayInFlow",
+            "description": "Wenn es ein Startereignis gibt, muss ein Gateway einen eingehenden Sequenzfluss haben"
+        },
+        {
+            "name": "correctEventBased",
+            "description": "Ein Ereignisbasiertes Gateway muss mind. 2 ausgehende Sequenzflüsse haben"
+        },
+        {
+            "name": "correctEventBasedFlows",
+            "description": "Ausgehende Sequenzflüsse aus einem Ereignisbasierten Gateway dürfen keine Bedingung haben"
+        },
+        {
+            "name": "elemsAfterEventBased",
+            "description": "Nach einem Ereignisbasierten Gateway dürfen nur empfangende Aufgaben oder Nachrichten-, Signal-, Zeit-, Bedingungs- oder Mehrfach-Zwischenereignisse sein"
+        },
+        {
+            "name": "inFlowAfterEventBased",
+            "description": "Elemente nach einem Ereignisbasierten Gateway dürfen keinen weiteren eingehenden Sequenzfluss haben (nur den vom Ereignisbasierten Gateway)"
+        },
+        {
+            "name": "noBoundaryAfterEventBased",
+            "description": "Empfangende Aufgaben nach einem Ereignisbasierten Gateway dürfen keine angeheften Ereignisse haben"
+        },
+        {
+            "name": "comboAfterEventBased",
+            "description": "Wenn Nachrichtenzwischenereignisse nach einem eventbasierten Gateway verwendet werden, darf es keine empfangende Aufgaben geben und umgekehrt"
+        },
+        {
+            "name": "correctSubStarts",
+            "description": "Startereignisse von Teilprozessen müssen unbestimmt sein"
+        },
+        {
+            "name": "correctEventSubStarts",
+            "description": "Ein Ereignisunterprozess hat genau ein typisiertes Startereignis"
+        },
+        {
+            "name": "noAdHocStartEnd",
+            "description": "Ein Ad-hoc Unterprozess darf kein Start- oder Endereignisse haben"
+        },
+        {
+            "name": "atLeastOneTask",
+            "description": "Ein Ad-hoc Unterprozess muss mindestens eine Aufgabe beinhalten"
+        },
+        {
+            "name": "noEventSubFlows",
+            "description": "Ereignisunterprozesse dürfen keinen eingehenden und ausgehenden Sequenzfluss haben"
+        },
+        {
+            "name": "messageDirection",
+            "description": "Ein- und Ausgangsrichtung von Nachrichtenereignissen müssen zum Ereignistyp passen"
+        },
+        {
+            "name": "noCompTaskFlows",
+            "description": "Kompensationsaufgaben dürfen keinen eingehenden und ausgehenden Sequenzfluss haben"
+        },
+        {
+            "name": "noThrowingBoundary",
+            "description": "Es dürfen keine angehefteten auslösenden Ereignisse verwendet werden"
+        },
+        {
+            "name": "linkPairs",
+            "description": "Ein auslösendes Linkereignis muss ein entsprechendes eintretendes Linkereignis haben (mit gleichen Namen)"
+        },
+        {
+            "name": "singleTargetLinks",
+            "description": "Es darf nicht mehrere Ziel Linkereignisse für ein auslösendes Linkereignis geben"
+        },
+        {
+            "name": "withinPools",
+            "description": "Flussobjekte (Aufgaben, Events, Gateways) dürfen sich nur innerhalb von Pools und Lanes befinden"
+        },
+        {
+            "name": "withinLanes",
+            "description": "Flussobjekte müssen eindeutig einer Lane zugeordnet sein (nicht mehreren)"
+        },
+        {
+            "name": "seqFlowsInPools",
+            "description": "Sequenzflüsse dürfen nicht über Poolgrenzen hinweg verwendet werden"
+        },
+        {
+            "name": "noMsgFlowsInPools",
+            "description": "Nachrichtenflüsse dürfen nicht innerhalb eines Pools verwendet werden"
+        },
+        {
+            "name": "withinSubs",
+            "description": "Sequenzflüsse dürfen nicht über Teilprozessgrenzen hinweg verwendet werden"
+        },
+        {
+            "name": "artifactAndDataConnects",
+            "description": "Für das Anbinden von Artefakten/Datenobjekten müssen Assoziationen verwendet werden"
+        }
+    ],
+    "guidelines": [
+        {
+            "name": "noLabelNames",
+            "description": "Der Name eines Elements selbst, z.B. Nachrichtenereignis, sollte nicht in der Bezeichnung vorkommen"
+        },
+        {
+            "name": "noArticles",
+            "description": "Artikel und Pronomen sollen in Bezeichnungen vermieden werden"
+        },
+        {
+            "name": "allTasksNamed",
+            "description": "Alle Aufgaben sollen einen Namen haben"
+        },
+        {
+            "name": "unnamedJoins",
+            "description": "Joins sollen (außer bei komplexen Gateways) unbenannt sein"
+        },
+        {
+            "name": "splitQuestions",
+            "description": "Splits (außer parallel/ereignisbasiert) sollen mit einer eindeutigen Frage benannt werden"
+        },
+        {
+            "name": "correctYesNo",
+            "description": "Sequenzflüsse sollen nach entsprechenden Gateways mit eindeutigen Bedingungen disjunkt und erschöpfend bezeichnet werden"
+        },
+        {
+            "name": "allEventsNamed",
+            "description": "Alle Ereignisse sollen benannt werden (Ausnahme für unbestimmte Start/Endereignisse)"
+        },
+        {
+            "name": "allDataObjectsNamed",
+            "description": "Alle Datenobjekte sollen benannt werden (mit [Zustand] in eckigen Klammern)"
+        },
+        {
+            "name": "explicitStartEnd",
+            "description": "Es sollten immer Start- und Endereignisse genutzt werden"
+        },
+        {
+            "name": "oneStart",
+            "description": "Es sollte optimalerweise je ein Start- und ein Endereignis verwendet werden -> nur Start"
+        },
+        {
+            "name": "diffStartsEnds",
+            "description": "Es soll möglichst ein Ereignis pro Start-/Endstatus verwendet werden (konsistente Verwendung)"
+        },
+        {
+            "name": "explicitSplitsJoins",
+            "description": "Zum Splitten und Joinen vom Kontrollfluss sollten immer explizit Gateways genutzt werden"
+        },
+        {
+            "name": "noMixedGateways",
+            "description": "Ein Gateway sollte nicht gleichzeitig zum Splitten und Mergen verwendet werden (kein Mixed Gateway)"
+        },
+        {
+            "name": "maxConsecGateways",
+            "description": "Komplexe aufeinanderfolgende Gatewaykonstrukte sollten in Geschäftsregeln überführt werden"
+        },
+        {
+            "name": "balancedGateways",
+            "description": "Gateways sollten balanciert verwendet werden (Split und Join vom gleichen Typ, außer falls eventbasiert/komplex)"
+        },
+        {
+            "name": "meaningfulGateways",
+            "description": "Gateways sollten nur sinnvoll verwendet werden, also für mehrere ein/ausgehende Flüsse"
+        },
+        {
+            "name": "defaultAfterIncl",
+            "description": "Nach (hauptsächlich inklusiven) Gateways sollten Default Sequenzflüsse verwendet werden"
+        },
+        {
+            "name": "annotatedLoops",
+            "description": "Loop-Aufgaben sollten mit ihrer Bedingung annotiert sein"
+        },
+        {
+            "name": "taskDescriptions",
+            "description": "Aufgaben sollten Beschreibungen enthalten"
+        },
+        {
+            "name": "max40Elements",
+            "description": "Die Anzahl der Elemente sollte minimiert werden und {30; 50} Elemente nicht überschreiten"
+        },
+        {
+            "name": "messageFlowUsage",
+            "description": "Es sollten Nachrichtenflüsse verwendet werden, insb. bei Nachrichtenevents und Sende/Empfangsaufgaben"
+        },
+        {
+            "name": "noRedundantFlows",
+            "description": "Es sollte keine redundanten Sequenzflüsse geben (nur ein Sequenzfluss zwischen zwei Elementen, außer bei zwei Gateways)"
+        },
+        {
+            "name": "poolsAndLanesNamed",
+            "description": "Pools und Lanes sollten immer einen Namen haben"
+        },
+        {
+            "name": "correctPoolNames",
+            "description": "Für Poolnamen soll nicht der Prozessnamen verwendet werden, sondern der “Teilnehmer”/die Partei (ggf. Ausnahmen)"
+        },
+        {
+            "name": "flowDirection",
+            "description": "Es sollten horizontale Sequenzflüsse und vertikale Nachrichtenflüsse / Assoziationen verwendet werden (ggf. nur auf bestimmte Elemente bezogen) *80%"
+        },
+        {
+            "name": "modellingDirection",
+            "description": "Es sollte von links nach rechts (bzw. mit konsistenter Orientierung) modelliert werden (ggf. nur für bestimmte Elemente)"
+        },
+        {
+            "name": "linearFlows",
+            "description": "Es sollten möglichst lineare Sequenz- und Nachrichtenflüsse verwendet werden *80%"
+        },
+        {
+            "name": "noOverlaps",
+            "description": "Überkreuzungen/Überlappungen sollten vermieden werden"
+        },
+        {
+            "name": "directedDataConnections",
+            "description": "Die Anbindung von Datenobjekten sollte konsistent mit gerichteten Assoziationen erfolgen"
+        }
+    ],
+    "other": [
+        {
+            "name": "nonEmpty",
+            "description": "Modelle müssen mind. eine Aktivität beinhalten"
+        },
+        {
+            "name": "nonLinear",
+            "description": "Modelle sollten mind. eine Verzweigung enthalten"
+        },
+        {
+            "name": "min4Activities",
+            "description": "Modelle sollten mind. vier Aktivitäten enthalten"
+        },
+        {
+            "name": "noShortNames",
+            "description": "Keine sehr kurze Namen, etc."
+        }
+    ]
+}

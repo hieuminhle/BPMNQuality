@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1sur8d9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.23.0">
+  <bpmn:collaboration id="Collaboration_19qv5wb">
+    <bpmn:participant id="Participant_1mvonzd" processRef="Process_16m7ojh" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_16m7ojh" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_0w6lsul">
+      <bpmn:lane id="Lane_04juooi">
+        <bpmn:flowNodeRef>StartEvent_155fj8f</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_06drtvk</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1i2bwxf">
+        <bpmn:flowNodeRef>Activity_0nzqtjr</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0kr4s14</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_155fj8f">
+      <bpmn:outgoing>Flow_0b3pqfy</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_06drtvk" name="Task_1">
+      <bpmn:incoming>Flow_0b3pqfy</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n2z5pj</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0nzqtjr" name="Task_2">
+      <bpmn:incoming>Flow_0n2z5pj</bpmn:incoming>
+      <bpmn:outgoing>Flow_19gqqq3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Event_0kr4s14">
+      <bpmn:incoming>Flow_19gqqq3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0b3pqfy" sourceRef="StartEvent_155fj8f" targetRef="Activity_06drtvk" />
+    <bpmn:sequenceFlow id="Flow_0n2z5pj" sourceRef="Activity_06drtvk" targetRef="Activity_0nzqtjr" />
+    <bpmn:sequenceFlow id="Flow_19gqqq3" sourceRef="Activity_0nzqtjr" targetRef="Event_0kr4s14" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_19qv5wb">
+      <bpmndi:BPMNShape id="Participant_1mvonzd_di" bpmnElement="Participant_1mvonzd" isHorizontal="true">
+        <dc:Bounds x="160" y="85" width="600" height="345" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_04juooi_di" bpmnElement="Lane_04juooi" isHorizontal="true">
+        <dc:Bounds x="190" y="85" width="570" height="185" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1i2bwxf_di" bpmnElement="Lane_1i2bwxf" isHorizontal="true">
+        <dc:Bounds x="190" y="270" width="570" height="160" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_155fj8f">
+        <dc:Bounds x="216" y="162" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06drtvk_di" bpmnElement="Activity_06drtvk">
+        <dc:Bounds x="310" y="140" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nzqtjr_di" bpmnElement="Activity_0nzqtjr">
+        <dc:Bounds x="470" y="310" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0kr4s14_di" bpmnElement="Event_0kr4s14">
+        <dc:Bounds x="632" y="332" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0b3pqfy_di" bpmnElement="Flow_0b3pqfy">
+        <di:waypoint x="252" y="180" />
+        <di:waypoint x="310" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n2z5pj_di" bpmnElement="Flow_0n2z5pj">
+        <di:waypoint x="410" y="180" />
+        <di:waypoint x="440" y="180" />
+        <di:waypoint x="440" y="350" />
+        <di:waypoint x="470" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19gqqq3_di" bpmnElement="Flow_19gqqq3">
+        <di:waypoint x="570" y="350" />
+        <di:waypoint x="632" y="350" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
