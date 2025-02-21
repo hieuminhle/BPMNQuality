@@ -8,7 +8,7 @@
 function checkOtherCriteria(parentProcess, collab, diagrams) {
 	const flowElems = parentProcess.flowElements
 		? parentProcess.flowElements
-		: []; //TODO
+		: []; // TODO
 
 	//>1 Aktivität
 	const nonEmpty =
